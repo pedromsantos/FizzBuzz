@@ -10,22 +10,19 @@
 
 -(NSString*) answer:(int)number
 {
-    if(number != 0)
+    if(number % 3 == 0 && number % 5 == 0)
     {
-        if(number % 3 == 0 && number % 5 == 0)
-        {
-            return @"fizzbuzz";
-        }
+        return @"fizzbuzz";
+    }
         
-        if(number % 3 == 0)
-        {
+    if(number % 3 == 0)
+    {
             return @"fizz";
-        }
+    }
         
-        if(number % 5 == 0)
-        {
+    if(number % 5 == 0)
+    {
             return @"buzz";
-        }
     }
     
     return [NSString stringWithFormat:@"%d", number];
@@ -46,13 +43,6 @@ describe(@"FizzBuzz", ^{
         
         afterEach(^{
             [calculator release], calculator = nil;
-        });
-        
-        it(@"should return '0' when given number is zero", ^{
-            
-            NSString* answer = [calculator answer:0];
-            
-            [[answer should] equal:@"0"];
         });
         
         it(@"should return '1' when given number is one", ^{
